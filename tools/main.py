@@ -51,8 +51,7 @@ sites = [
 ]
 
 addr2ip = {}
-# hostLocation = r"C:\Windows\System32\drivers\etc\hosts"
-hostLocation = r"E:\downloads\chrome\speed-github-master\hosts"
+hostLocation = r"hosts"
 
 def dropDuplication(line):
     flag = False
@@ -73,7 +72,6 @@ def updateHost():
         if trueip != None:
             addr2ip[site] = trueip
             print(site + "\t" + trueip)
-    shutil.copy(hostLocation, hostLocation + ".bak")  # 做一份host备份
     with open(hostLocation, "r") as f1:
         f1_lines = f1.readlines()
         with open("temphost", "w") as f2:
@@ -85,22 +83,7 @@ def updateHost():
             for key in addr2ip:
                 f2.write(addr2ip[key] + "\t" + key + "\n")
 
-    shutil.copy("./temphost", hostLocation)
-    os.system("ipconfig /flushdns")
-
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except Exception as e:
-        return False
+    os.remove("./temphost")
 
 if __name__ == "__main__":
-    os=platform.system()
-    if os=="Windows":
-        # if is_admin():
-        #     print("admin.....")
-        # else:
-        #     if sys.version_info[0]==3:
-        #         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
-        #         print("hahhah....")
         updateHost()
