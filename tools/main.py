@@ -68,7 +68,7 @@ def dropDuplication(line):
 def updateHost():
     today = datetime.date.today()
     for site in sites:
-        trueip=get_ip_utils.getIpFromChinaz(site)
+        trueip=get_ip_utils.getIpFromipapi(site)
         if trueip != None:
             addr2ip[site] = trueip
             print(site + "\t" + trueip)
@@ -79,11 +79,11 @@ def updateHost():
                 if dropDuplication(line) == False:
                     f2.write(line)
             f2.write("#*********************github " +
-                     str(today) + " update********************\r\n")
+                     str(today) + " update********************\n")
             for key in addr2ip:
                 f2.write(addr2ip[key] + "\t" + key + "\n")
-
-    os.remove("./temphost")
+    os.remove(hostLocation)
+    os.rename("temphost",hostLocation)
 
 if __name__ == "__main__":
-        updateHost()
+    updateHost()

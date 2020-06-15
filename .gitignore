@@ -1,2 +1,3 @@
-/tools/__pycache__/*.pyc
+*.pyc
 /.vscode
+/.idea
