@@ -47,6 +47,7 @@ sites = [
     "pages.github.com",
     "api.github.com",
     "live.github.com",
+    "githubapp.com",
     "github.com"
 ]
 
