@@ -29,6 +29,7 @@ sites = [
     "raw.github.com",
     "status.github.com",
     "training.github.com",
+    "avatars.githubusercontent.com",
     "avatars0.githubusercontent.com",
     "avatars1.githubusercontent.com",
     "avatars2.githubusercontent.com",
@@ -38,7 +39,16 @@ sites = [
     "avatars6.githubusercontent.com",
     "avatars7.githubusercontent.com",
     "avatars8.githubusercontent.com",
+    "favicons.githubusercontent.com",
     "codeload.github.com",
+    "github-cloud.s3.amazonaws.com",
+    "github-com.s3.amazonaws.com",
+    "github-production-release-asset-2e65be.s3.amazonaws.com",
+    "github-production-user-asset-6210df.s3.amazonaws.com",
+    "github-production-repository-file-5c1aeb.s3.amazonaws.com",
+    "githubstatus.com",
+    "github.community",
+    "media.githubusercontent.com",
     "camo.githubusercontent.com",
     "raw.githubusercontent.com", 
     "cloud.githubusercontent.com",
@@ -81,6 +91,7 @@ def updateHost():
                     f2.write(line)
             f2.write("#*********************github " +
                      str(today) + " update********************\n")
+            f2.write("#******* get least hosts: http://blog.yoqi.me/lyq/16489.html\n")
             for key in addr2ip:
                 f2.write(addr2ip[key] + "\t" + key + "\n")
     os.remove(hostLocation)
