@@ -91,7 +91,7 @@ def updateHost():
                     f2.write(line)
             f2.write("#*********************github " +
                      str(today) + " update********************\n")
-            f2.write("#******* get least hosts: http://blog.yoqi.me/lyq/16489.html\n")
+            f2.write("#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html\n")
             for key in addr2ip:
                 f2.write(addr2ip[key] + "\t" + key + "\n")
     os.remove(hostLocation)
