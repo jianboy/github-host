@@ -66,7 +66,7 @@ hostLocation = r"hosts"
 
 def dropDuplication(line):
     flag = False
-    if "#*********************github" in line:
+    if "#*******" in line:
         return True
     for site in sites:
         if site in line:
