@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import github_host
+
+if __name__ == '__main__':
+    github_host.main()

@@ -37,7 +37,7 @@ jobs:
       - name: Update Deny Host
         run: |
           pwd
-          python tools/main.py
+          python main.py
 
       - name: Push to built branch
         uses: Automattic/action-commit-to-branch@master

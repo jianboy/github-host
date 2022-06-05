@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+'''
+@Contact :   liuyuqi.gov@msn.cn
+@Time    :   2019/08/03 17:02:15
+@License :   Copyright © 2017-2022 liuyuqi. All Rights Reserved.
+@Desc    :   get ip from ip address
+'''
+
+from email import header
 import requests
 from bs4 import BeautifulSoup
 import re,json
