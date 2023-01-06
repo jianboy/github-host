@@ -10,7 +10,8 @@
 from email import header
 import requests
 from bs4 import BeautifulSoup
-import re,json
+import re
+import json
 
 
 def getIpFromIpaddress(site):
@@ -37,7 +38,7 @@ def getIpFromChinaz(site):
     url = "http://ip.tool.chinaz.com/" + site
     trueip = None
     try:
-        res = requests.get(url, headers=headers,timeout=5)
+        res = requests.get(url, headers=headers, timeout=5)
         soup = BeautifulSoup(res.text, 'html.parser')
         result = soup.find_all('span', class_="Whwtdhalf w15-0")
         for c in result:
@@ -59,7 +60,7 @@ def getIpFromWhatismyipaddress(site):
     }
     trueip = None
     try:
-        res = requests.post(url, headers=headers, data=data,timeout=5)
+        res = requests.post(url, headers=headers, data=data, timeout=5)
         soup = BeautifulSoup(res.text, 'html.parser')
         result = soup.find_all('span', class_="Whwtdhalf w15-0")
         for c in result:
@@ -70,6 +71,7 @@ def getIpFromWhatismyipaddress(site):
         print("查询" + site + " 时出现错误: " + str(e))
     return trueip
 
+
 def getIpFromipapi(site):
     '''
     return trueip: None or ip
@@ -78,11 +80,13 @@ def getIpFromipapi(site):
                'Host': 'ip-api.com'}
     url = "http://ip-api.com/json/%s?lang=zh-CN" % (site)
     trueip = None
-    try:
-        res = requests.get(url, headers=headers,timeout=5)
-        res=json.loads(res.text)
-        if(res["status"]=="success"):
-            trueip=res["query"]
-    except Exception as e:
-        print("查询" + site + " 时出现错误: " + str(e))
+    for i in range(5):
+        try:
+            res = requests.get(url, headers=headers, timeout=5)
+            res = json.loads(res.text)
+            if(res["status"] == "success") and len(re.findall(r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b", res["query"])) == 1:
+                trueip = res["query"]
+                break
+        except Exception as e:
+            print("查询" + site + " 时出现错误: " + str(e))
     return trueip
