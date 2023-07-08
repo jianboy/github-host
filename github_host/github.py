@@ -32,6 +32,17 @@ class Github(object):
                 flag = flag or False
         return flag
 
+    def saveRouterosFile(self):
+        ''' 应网友需求，导出一份 routeros 格式的hosts文件 '''
+        today = datetime.date.today()
+        with open("hosts-routeros.txt", "w") as f:
+            f.write("#*********************github " +
+                    str(today) + " update********************\n")
+            f.write(
+                "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html\n")
+            for key in self.addr2ip:
+                f.write("add address=" + self.addr2ip[key] + " name="+ key + "\n")
+
     # 更新host, 并刷新本地DNS
     def updateHost(self):
         today = datetime.date.today()
@@ -54,3 +65,5 @@ class Github(object):
                     f2.write(self.addr2ip[key] + "\t" + key + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
+        # os.system("ipconfig /flushdns")
+        self.saveRouterosFile()
