@@ -23,7 +23,7 @@ def getIpFromIpaddress(site):
         res = requests.get(url, headers=headers, timeout=5)
         soup = BeautifulSoup(res.text, 'html.parser')
         ip = re.findall(r"\b(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}\b", res.text)
-        result = soup.find_all('div', id="tabpanel-dns-aaaa")
+        result = soup.find_all({'class':'origin'})
         for c in result:
             if len(ip) != 0:
                 trueip = ip[0]
