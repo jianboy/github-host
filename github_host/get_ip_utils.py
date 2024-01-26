@@ -40,7 +40,7 @@ def getIpFromChinaz(site):
     try:
         res = requests.get(url, headers=headers, timeout=5)
         soup = BeautifulSoup(res.text, 'html.parser')
-        result = soup.find_all('span', class_="Whwtdhalf w15-0")
+        result = soup.find_all('span', {"target": "_blank"})
         for c in result:
             ip = re.findall(r"\b(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}\b", c.text)
             if len(ip) != 0:
