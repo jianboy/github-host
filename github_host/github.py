@@ -48,7 +48,7 @@ class Github(object):
         today = datetime.date.today()
         for site in self.sites:
             trueip = get_ip_utils.getIpFromipapi(site)
-            if trueip != None:
+            if len(trueip) != 0:
                 self.addr2ip[site] = trueip
                 for i in range(len(trueip)):
                     print(site + "\t" + trueip[i])
