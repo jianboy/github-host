@@ -17,7 +17,7 @@ import json
 def getIpFromIpaddress(site):
     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebkit/737.36(KHTML, like Gecke) Chrome/52.0.2743.82 Safari/537.36',
                'Host': 'ipaddress.com'}
-    url = "https://ipaddress.com/search/" + site
+    url = "https://sites.ipaddress.com/" + site
     trueip = None
     try:
         res = requests.get(url, headers=headers, timeout=5)
