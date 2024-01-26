@@ -42,7 +42,7 @@ jobs:
       - name: Push to built branch
         uses: Automattic/action-commit-to-branch@master
         with:
-          branch: 'master'
+          branch: 'ipv6'
           commit_message: 'Update Host'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
