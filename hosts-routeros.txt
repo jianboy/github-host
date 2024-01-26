@@ -1,13 +1,19 @@
-#*********************github 2024-01-25 update********************
+#*********************github 2024-01-26 update********************
 #******* get latest hosts: http://blog.yoqi.me/lyq/16489.html
-add address=172.67.159.231 name=nhentai.net
-add address=104.21.66.123 name=static.nhentai.net
+add address=104.21.66.123 name=nhentai.net
+add address=172.67.159.231 name=static.nhentai.net
 add address=185.107.44.3 name=t3.nhentai.net
 add address=185.177.127.77 name=t5.nhentai.net
 add address=185.177.127.78 name=t7.nhentai.net
 add address=185.107.44.3 name=i3.nhentai.net
 add address=185.177.127.77 name=i5.nhentai.net
 add address=185.177.127.78 name=i7.nhentai.net
-add address=172.67.3.188 name=www.v2ex.com
-add address=104.26.10.233 name=nhentai.com
-add address=104.21.1.9 name=nhentai.io
+add address=172.67.74.226 name=nhentai.com
+add address=104.26.10.233 name=cdn.nhentai.com
+add address=35.186.241.51 name=api.mixpanel.com
+add address=104.21.234.50 name=himg.nl
+add address=172.67.151.185 name=nhentai.io
+add address=104.26.4.242 name=i2.nhentai.xxx
+add address=104.26.4.242 name=i3.nhentai.xxx
+add address=104.26.5.242 name=i4.nhentai.xxx
+add address=104.17.25.14 name=cdnjs.cloudflare.com
