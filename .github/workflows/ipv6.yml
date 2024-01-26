@@ -1,10 +1,10 @@
-name: auto CI
+name: auto ipv6 CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ipv6 ]
   pull_request:
-    branches: [ master ]
+    branches: [ ipv6 ]
   schedule:
   - cron: "0 2 * * *"
 
