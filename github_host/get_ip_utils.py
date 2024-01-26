@@ -22,24 +22,20 @@ def getIpFromIpaddress(site):
     try:
         res = requests.get(url, headers=headers, timeout=5)
         soup = BeautifulSoup(res.text, 'html.parser')
-        if re.search('0 x IPv6', res.text) == None :
-            ip = re.findall(r"\b(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}\b", res.text)
-            result = soup.find_all('div', class_="comma-separated")
-        else
-            return
-            for c in result:
-               if len(ip) != 0:
-                 trueip = ip[0]
+        ip = re.findall(r"\b(?:[A-F0-9]{1,4}:){7}[A-F0-9]{1,4}\b", res.text)
+        result = soup.find_all('div', class_="comma-separated")
+        for c in result:
+            if len(ip) != 0:
+                trueip = ip[0]
     except Exception as e:
         print("查询" + site + " 时出现错误: " + str(e))
     return trueip
 
 
-
 def getIpFromChinaz(site):
     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebkit/737.36(KHTML, like Gecke) Chrome/52.0.2743.82 Safari/537.36',
-               'Host': 'ip.tool.chinaz.com'}
-    url = "https://ipw.cn/ipv6webcheck/?site=" + site
+               'Host': 'ipw.cn'}
+    url = "http://ipw.cn/ipv6webcheck/?site=" + site
     trueip = None
     try:
         res = requests.get(url, headers=headers, timeout=5)
