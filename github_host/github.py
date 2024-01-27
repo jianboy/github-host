@@ -61,7 +61,8 @@ class Github(object):
                     result=self.dropDuplication(line,newhosts)
                     newhosts=result[1]
                     newkey=result[0]
-                    print(line result) 
+                    print(line)
+                    print(result) 
                     if newkey == False:
                         f2.write(line)
                 f2.write("#*********************github " +
