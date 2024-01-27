@@ -49,17 +49,14 @@ class Github(object):
         today = datetime.date.today()
         for site in self.sites:
             trueip = get_ip_utils.getIpFromipapi(site)
+            if trueip != None:
+                self.addr2ip[site] = trueip[0]
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
                 for line in f1_lines:         # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容
                     if self.dropDuplication(line) == False:
-                        for key in self.addr2ip:
-                            for newhosts in range(len(trueip)):
-                                print(key)
-                                print(self.addr2ip[key])
-                                print(trueip[newhosts])
-                                f2.write(trueip[newhosts] + "\t" + self.addr2ip[key] + "\n")
+                        f2.write(line)
                 f2.write("#*********************github " +
                      str(today) + " update********************\n")
                 for key in self.addr2ip:
