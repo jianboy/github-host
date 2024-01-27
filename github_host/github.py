@@ -56,21 +56,19 @@ class Github(object):
                     print(self.addr2ip) 
                     print(self.addr2ip[site])
                     print(site)
-        with open(self.hostLocation, "r") as f1:
-            f1_lines = f1.readlines()
-            with open("temphost", "w") as f2:
-                for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容 
-                    result=self.dropDuplication(line,newhosts)
-                    newhosts=result[1]
-                    newkey=result[0]
-                    print(line)
-                    print(result) 
-                    if newkey == False:
-                        f2.write(line)
-                f2.write("#*********************github " +
-                         str(today) + " update********************\n")
-                for key in self.addr2ip:
-                    f2.write(self.addr2ip[key] + "\t" + key + "\n")
+                    with open(self.hostLocation, "r") as f1:
+                        f1_lines = f1.readlines()
+                        with open("temphost", "w") as f2:
+                            for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容 
+                                result=self.dropDuplication(line,newhosts)
+                                newhosts=result[1]
+                                newkey=result[0]
+                                if newkey == False:
+                                    f2.write(line):
+                                    f2.write("#*********************github " +
+                                             str(today) + " update********************\n")
+                                    for key in self.addr2ip:
+                                        f2.write(self.addr2ip[key] + "\t" + key + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
         # os.system("ipconfig /flushdns")
