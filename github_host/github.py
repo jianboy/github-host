@@ -59,6 +59,9 @@ class Github(object):
                      str(today) + " update********************\n")
                 for key in self.addr2ip:
                      for newhosts in range(len(trueip)):
+                         print(key)
+                         print(self.addr2ip[key])
+                         print(newhosts)
                          f2.write(self.addr2ip[key] + "\t" + trueip[newhosts] + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
