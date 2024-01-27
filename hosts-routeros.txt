@@ -1,2 +1,6 @@
 #*********************github 2024-01-27 update********************
-#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n
+#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/nadd address=2606:4700:20::681a:ae9 name=nhentai.com
+add address=2606:4700:20::681a:ae9c name=cdn.nhentai.com
+add address=2606:4700:3034::6815:109 name=nhentai.io
+add address=2606:4700:3038::6815:ea32 name=himg.nl
+add address=2606:4700:20::681a:4f2 name=nhentai.xxx
