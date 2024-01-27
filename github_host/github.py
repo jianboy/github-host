@@ -53,7 +53,9 @@ class Github(object):
             if trueip != None:
                 for key in range(len(trueip)):
                     self.addr2ip[site] = trueip[key]
-                    print(site + "\t" + trueip[key]) 
+                    print(addr2ip) 
+                    print(addr2ip[site])
+                    print(site)
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
