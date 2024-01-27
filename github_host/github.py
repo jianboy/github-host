@@ -52,7 +52,8 @@ class Github(object):
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
-                for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容
+                for line in f1_lines:         # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容
+                    print(line)
                     if self.dropDuplication(line) == False:
                         f2.write(line)
                 f2.write("#*********************github " +
