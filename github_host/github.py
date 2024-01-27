@@ -21,17 +21,16 @@ class Github(object):
         self.addr2ip = {}
         self.hostLocation = r"hosts"
 
-    def dropDuplication(self, line, newhosts):
+    def dropDuplication(self, line):
         flag = False
         if "#*******" in line:
-            return True, None
-        if line != newhosts:
+            return True
             for site in self.sites:
                 if site in line:
                     flag = flag or True
                 else:
                     flag = flag or False
-        return flag, site
+        return flag
 
     def saveRouterosFile(self):
         ''' 应网友需求，导出一份 routeros 格式的hosts文件 '''
@@ -46,26 +45,23 @@ class Github(object):
 
     # 更新host, 并刷新本地DNS
     def updateHost(self):
-        newhosts = None
         today = datetime.date.today()
         for site in self.sites:
             trueip = get_ip_utils.getIpFromipapi(site)
             if trueip != None:
-                for key in range(len(trueip)):
-                    self.addr2ip.append[site] = trueip[key]
-                    with open(self.hostLocation, "r") as f1:
-                        f1_lines = f1.readlines()
-                        with open("temphost", "w") as f2:
-                            for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容 
-                                result=self.dropDuplication(line,newhosts)
-                                newhosts=result[1]
-                                newkey=result[0]
-                                if newkey == False:
+                    self.addr2ip.append[site] = trueip[0]
+            with open(self.hostLocation, "r") as f1:
+                    f1_lines = f1.readlines()
+                    with open("temphost", "w") as f2:
+                        for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容 
+                            result=self.dropDuplication(line)
+                                if self.dropDuplication(line) == False:
                                     f2.write(line)
-                                    f2.write("#*********************github " +
-                                             str(today) + " update********************\n")
-                                    for key in self.addr2ip:
-                                        f2.write(self.addr2ip[key] + "\t" + key + "\n")
+                        f2.write("#*********************github " +
+                                str(today) + " update********************\n")
+                        for key in self.addr2ip:
+                            for newhosts in range(len(trueip)):
+                                f2.write(self.addr2ip[key] + "\t" + trueip[newhosts] + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
         # os.system("ipconfig /flushdns")
