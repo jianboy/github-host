@@ -51,8 +51,9 @@ class Github(object):
         for site in self.sites:
             trueip = get_ip_utils.getIpFromipapi(site)
             if trueip != None:
-                self.addr2ip[site] = trueip
-                print(site + "\t" + trueip)
+                for key in range(len(trueip)):
+                    self.addr2ip[site] = trueip[key]
+                    print(site + "\t" + trueip[key]) 
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
