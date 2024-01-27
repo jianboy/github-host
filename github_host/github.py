@@ -57,9 +57,9 @@ class Github(object):
                         f2.write(line)
                 f2.write("#*********************github " +
                      str(today) + " update********************\n")
-                        for key in self.addr2ip:
-                            for newhosts in range(len(trueip)):
-                                f2.write(self.addr2ip[key] + "\t" + trueip[newhosts] + "\n")
+                for key in self.addr2ip:
+                     for newhosts in range(len(trueip)):
+                         f2.write(self.addr2ip[key] + "\t" + trueip[newhosts] + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
         # os.system("ipconfig /flushdns")
