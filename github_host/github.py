@@ -61,12 +61,11 @@ class Github(object):
                     result=self.dropDuplication(line,newhosts)
                     newhosts=result[1]
                     newkey=result[0]
+                    print(line result) 
                     if newkey == False:
                         f2.write(line)
                 f2.write("#*********************github " +
                          str(today) + " update********************\n")
-                f2.write(
-                    "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
                 for key in self.addr2ip:
                     f2.write(self.addr2ip[key] + "\t" + key + "\n")
         os.remove(self.hostLocation)
