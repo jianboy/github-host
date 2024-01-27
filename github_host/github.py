@@ -64,7 +64,7 @@ class Github(object):
                                 newhosts=result[1]
                                 newkey=result[0]
                                 if newkey == False:
-                                    f2.write(line):
+                                    f2.write(line)
                                     f2.write("#*********************github " +
                                              str(today) + " update********************\n")
                                     for key in self.addr2ip:
