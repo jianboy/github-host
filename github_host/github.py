@@ -21,16 +21,17 @@ class Github(object):
         self.addr2ip = {}
         self.hostLocation = r"hosts"
 
-    def dropDuplication(self, line):
+    def dropDuplication(self, line, newhosts):
         flag = False
         if "#*******" in line:
-            return True
-        for site in self.sites:
-            if site in line:
-                flag = flag or True
-            else:
-                flag = flag or False
-        return flag
+            return True, None
+        if line != newhosts:
+            for site in self.sites:
+                if site in line:
+                    flag = flag or True
+                else:
+                    flag = flag or False
+        return flag, site
 
     def saveRouterosFile(self):
         ''' 应网友需求，导出一份 routeros 格式的hosts文件 '''
@@ -39,29 +40,32 @@ class Github(object):
             f.write("#*********************github " +
                     str(today) + " update********************\n")
             f.write(
-                "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html\n")
+                "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
             for key in self.addr2ip:
                 f.write("add address=" + self.addr2ip[key] + " name="+ key + "\n")
 
     # 更新host, 并刷新本地DNS
     def updateHost(self):
+        newhosts = None
         today = datetime.date.today()
         for site in self.sites:
             trueip = get_ip_utils.getIpFromipapi(site)
             if trueip != None:
-                for i in range(len(trueip)):
-                    self.addr2ip[site] = trueip[i]
-                    print(site + "\t" + trueip[i])
+                self.addr2ip[site] = trueip
+                print(site + "\t" + trueip)
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
-                for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容
-                    if self.dropDuplication(line) == False:
+                for line in f1_lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有github相关内容 
+                    result=self.dropDuplication(line,newhosts)
+                    newhosts=result[1]
+                    newkey=result[0]
+                    if newkey == False:
                         f2.write(line)
                 f2.write("#*********************github " +
                          str(today) + " update********************\n")
                 f2.write(
-                    "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html\n")
+                    "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
                 for key in self.addr2ip:
                     f2.write(self.addr2ip[key] + "\t" + key + "\n")
         os.remove(self.hostLocation)
