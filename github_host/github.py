@@ -59,7 +59,7 @@ class Github(object):
                 f2.write("#*********************github " +
                      str(today) + " update********************\n")
                 for key in range(1, len(self.trueip), 2):
-                         f2.write(self.trueip[key] + "\t" + self.trueip[key+1] + "\n")
+                    f2.write(self.trueip[key] + "\t" + self.trueip[key+1] + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
         # os.system("ipconfig /flushdns")
