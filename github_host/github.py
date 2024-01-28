@@ -48,10 +48,8 @@ class Github(object):
         for site in self.sites:
             ips = get_ip_utils.getIpFromipapi(site)
             if ips:  # 检查 ips 是否不为 None 且为非空列表
-                for sum in len(ips):
-                    print(site)
-                    self.trueip.extend(ips[num])
-                    self.trueip.extend(site)
+                for key in ips:
+                    self.trueip.extend([key，site])
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
