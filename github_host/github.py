@@ -46,6 +46,7 @@ class Github(object):
 
     # 更新host, 并刷新本地DNS
     def updateHost(self):
+        trueip =[]
         today = datetime.date.today()
         for site in self.sites:
             trueip.extend(get_ip_utils.getIpFromipapi(site))
