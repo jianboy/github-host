@@ -25,11 +25,11 @@ class Github(object):
         flag = False
         if "#*******" in line:
             return True
-            for site in self.sites:
-                if site in line:
-                    flag = flag or True
-                else:
-                    flag = flag or False
+        for site in self.sites:
+            if site in line:
+                flag = flag or True
+            else:
+                flag = flag or False
         return flag
 
     def saveRouterosFile(self):
