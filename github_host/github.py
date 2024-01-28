@@ -40,17 +40,16 @@ class Github(object):
                     str(today) + " update********************\n")
             f.write(
                 "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
-            for key in self.addr2ip:
-                f.write("add address=" + self.addr2ip[key] + " name="+ key + "\n")
-
+            for newsite in self.sites
+ for newsite in self.sites:
+     for newip in self.trueip:
+         f2.write(newip + "\t" + newsite + "\n")
     # 更新host, 并刷新本地DNS
                                 
     def updateHost(self):
         today = datetime.date.today()
         for site in self.sites:
-            trueip = get_ip_utils.getIpFromipapi(site)
-            if trueip and len(trueip) > 0:
-                self.addr2ip[site] = trueip[0]
+            trueip.extend(get_ip_utils.getIpFromipapi(site))
         with open(self.hostLocation, "r") as f1:
             f1_lines = f1.readlines()
             with open("temphost", "w") as f2:
@@ -59,12 +58,11 @@ class Github(object):
                         f2.write(line)
                 f2.write("#*********************github " +
                      str(today) + " update********************\n")
-                for key in self.addr2ip:
-                     for newhosts in range(len(trueip)):
-                         print(key)
-                         print(self.addr2ip[key])
-                         print(newhosts)
-                         f2.write(self.addr2ip[key] + "\t" + trueip[newhosts] + "\n")
+                for newsite in self.sites
+                     for newip in self.trueip:
+                         print(newsite)
+                         print(newip)
+                         f2.write(newip + "\t" + newsite + "\n")
         os.remove(self.hostLocation)
         os.rename("temphost", self.hostLocation)
         # os.system("ipconfig /flushdns")
