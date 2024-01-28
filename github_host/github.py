@@ -44,7 +44,7 @@ class Github(object):
                 for newip in self.trueip:
                     f2.write(newip + "\t" + newsite + "\n"
 
-    # 更新host, 并刷新本地DNS                             
+    # 更新host, 并刷新本地DNS                           
     def updateHost(self):
         today = datetime.date.today()
         for site in self.sites:
