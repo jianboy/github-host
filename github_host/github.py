@@ -58,7 +58,7 @@ class Github(object):
                         f2.write(line)
                 f2.write("#*********************github " +
                      str(today) + " update********************\n")
-                for newsite in self.sites
+                for newsite in self.sites:
                      for newip in self.trueip:
                          print(newsite)
                          print(newip)
