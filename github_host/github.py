@@ -40,10 +40,12 @@ class Github(object):
                     str(today) + " update********************\n")
             f.write(
                 "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
-            for newsite in self.sites
- for newsite in self.sites:
-     for newip in self.trueip:
-         f2.write(newip + "\t" + newsite + "\n")
+            for newsite in self.sites:
+                for newip in self.trueip:
+                    f2.write(newip + "\t" + newsite + "\n"
+   
+                             
+                             
     # 更新host, 并刷新本地DNS
                                 
     def updateHost(self):
