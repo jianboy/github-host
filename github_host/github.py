@@ -39,11 +39,8 @@ class Github(object):
         with open("hosts-routeros.txt", "w") as f:
             f.write("#*********************github " +
                     str(today) + " update********************\n")
-            f.write(
-                "#******* get latest hosts: http://blog.yoqi.me/lyq/16489.html/n")
-            for newsite in self.sites:
-                for newip in self.trueip:
-                    f2.write(newip + "\t" + newsite + "\n")
+            for key in range(1, len(self.trueip), 2):
+                         f2.write(self.trueip[key] + "\t" + self.trueip[key+1] + "\n")
 
     # 更新host, 并刷新本地DNS
     def updateHost(self):
