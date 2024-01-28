@@ -39,7 +39,7 @@ class Github(object):
         with open("hosts-routeros.txt", "w") as f:
             f.write("#*********************github " +
                     str(today) + " update********************\n")
-            for key in range(1, len(self.trueip), 2):
+            for key in range(0, len(self.trueip), 2):
                 f.write(self.trueip[key] + "\t" + self.trueip[key+1] + "\n")
 
     # 更新host, 并刷新本地DNS
